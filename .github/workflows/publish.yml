@@ -18,9 +18,10 @@ jobs:
       - name: Set up Git repository
         uses: actions/checkout@v1
       - name: Compile document.tex
-        uses: dante-ev/latex-action@master
+        uses: xu-cheng/latex-action@v3
         with:
-          root_file: main.tex
+          root_file: |
+            main.tex
       - name: Publish
         uses: dev-build-deploy/release-me@v0.14.0
         with:
