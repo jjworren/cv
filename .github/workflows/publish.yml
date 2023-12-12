@@ -6,9 +6,9 @@ name: CI
 on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -21,15 +21,14 @@ jobs:
         uses: dante-ev/latex-action@master
         with:
           root_file: main.tex
-      # - name: Publish
-      #   uses: dev-build-deploy/release-me@v0.14.0
-      #   with:
-      #     # Path to the Release configuration file, defaults to .github/release.yml
-      #     config: # optional, default is .github/release.yml
-      #     # Multiline list of artifact names, uploaded as part of the current workflow run, to upload as a GitHub Release asset
-      #     artifacts: # optional
-      #     # Multiline list of files (paths) to upload as a GitHub Release asset
-      #     files: # optional
-      #     # Versioning scheme to apply
-      #     versioning: calve
-  
+      - name: Publish
+        uses: dev-build-deploy/release-me@v0.14.0
+        with:
+          token: ${{ github.token }}
+          draft: true
+          # Multiline list of artifact names, uploaded as part of the current workflow run, to upload as a GitHub Release asset
+          artifacts: # optional
+          # Multiline list of files (paths) to upload as a GitHub Release asset
+          files: ./main.pdf
+          # Versioning scheme to apply
+          versioning: calver
