@@ -1,0 +1,33 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: ["main"]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v1
+      - name: Compile document.tex
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: |
+            main.tex
+      - name: Publish
+        uses: dev-build-deploy/release-me@v0.14.0
+        with:
+          token: ${{ github.token }}
+          # Multiline list of artifact names, uploaded as part of the current workflow run, to upload as a GitHub Release asset
+          artifacts: # optional
+          # Multiline list of files (paths) to upload as a GitHub Release asset
+          files: | 
+            main.pdf
+          # Versioning scheme to apply
+          versioning: calver
