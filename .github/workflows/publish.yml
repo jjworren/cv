@@ -27,6 +27,7 @@ jobs:
           # Multiline list of artifact names, uploaded as part of the current workflow run, to upload as a GitHub Release asset
           artifacts: # optional
           # Multiline list of files (paths) to upload as a GitHub Release asset
-          files: ./main.pdf
+          files: | 
+            main.pdf
           # Versioning scheme to apply
           versioning: calver
