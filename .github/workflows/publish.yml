@@ -24,7 +24,6 @@ jobs:
         uses: dev-build-deploy/release-me@v0.14.0
         with:
           token: ${{ github.token }}
-          draft: true
           # Multiline list of artifact names, uploaded as part of the current workflow run, to upload as a GitHub Release asset
           artifacts: # optional
           # Multiline list of files (paths) to upload as a GitHub Release asset
